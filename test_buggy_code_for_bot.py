@@ -1,4 +1,4 @@
-"""Test file with intentional bugs for PR bot testing."""
+"""Test file with intentional bugs for PR bot testing - Version 2."""
 
 def unsafe_sql_query(user_id):
     """Bug: SQL injection vulnerability."""
@@ -26,3 +26,17 @@ class DataProcessor:
 
     def process(self):
         return self.data.upper()
+
+def new_buggy_function(password):
+    """NEW BUG in v2: Hardcoded credentials and weak crypto."""
+    secret_key = "admin123"  # Bug: Hardcoded credential
+    import hashlib
+    # Bug: MD5 is cryptographically broken
+    hashed = hashlib.md5(password.encode()).hexdigest()
+    return hashed == secret_key
+
+def unsafe_eval(user_input):
+    """NEW BUG in v2: Code injection via eval."""
+    # Bug: eval() on user input is extremely dangerous
+    result = eval(user_input)
+    return result
